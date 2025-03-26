@@ -6,44 +6,93 @@ import style from '../../design/password.module.css';
 
 
 export const  Changepassword = () => {
-    const [password, setPassword] = useState("");
-    const [user, setUser] = useState("");
+    
+    const[input, setInput] = useState({
+        user:"",
+        password:"",
+        show:""
+    })
+    const [errors, setErrors] = useState(true)
+    const [show, setShow] = useState("")
     const navigate = useNavigate();
 
-    //Validadciones
-    const isLongEnough = password.length >= 8;
-    const hasUpperCase = /[A-Z]/.test(password);
-    const hasLoweCase = /[a-z]/.test(password);
-    const haNumber = /\d/.test(password);
 
-
-    const handlesubmit = (e) => {
-        e.preventDefault()
-     password.trim() !=  "" ?navigate("/next-page"):alert("Por favor ingrese una contraseña")
+    //Validaciones
+    const isLongEnough = input.password.length >= 8;
+    const hasUpperCase = /[A-Z]/.test(input.password);
+    const hasLoweCase = /[a-z]/.test(input.password);
+    const haNumber = /\d/.test(input.password);
+    function handlechange(e){
+        setInput({
+            ...input,
+            [e.target.name]: e.target.value
+        })
+        setErrors({
+            ...input,
+            [e.target.name]: e.target.value
+        })
     }
 
+
+    function handlesubmit (e) {
+        e.preventDefault()
+        if(
+            input.user.length <= 0 || !isLongEnough || !hasUpperCase || !hasLoweCase || !haNumber
+        ){
+            alert("Completar datos solicitados")
+            console.log("la contraseña es menor a 8")
+        }else{
+            navigate("/next-page")
+        }
+    }
+
+    function validacion(input){
+        //Validadciones
+
+           let errors = {};
+
+           if(!input.user){
+            errors.user = "Ingrese su nombre de usuario"
+           }
+
+    }
+
+    const togglePasswordVisibility = () => {
+        setShow(!show)
+
+    }
     return (
         <div className={style.change}>
-            <form onSubmit={handlesubmit}>
+            <form onSubmit={(e)=>handlesubmit(e)}>
                 <h2>Ingrese su nombre de usuario</h2>
                    <div className={style.password}>
                      <input 
                          placeholder="usuario" 
-                         type="user" 
-                         value={user}
-                         onChange={(e)=>setUser(e.target.value)}
+                         type="text"
+                         name="user"
+                         value={input.user} 
+                         onChange={e=>handlechange(e)}
                       />
-                    <input type="submit" id="password-submit" value="Next"/>
                   </div>
                 <h2>Ingrese su nueva contraseña</h2>
                 <div className={style.password}>
                    <input 
                        placeholder="Contraseña" 
-                       type="password" 
-                       value={password}
-                       onChange={(e)=>setPassword(e.target.value)}
+                    //    type={input.show ? 'text' : 'password'}
+                    type='text'
+                       value={input.password}
+                       name="password"
+                       onChange={e=>handlechange(e)}
+                       className={style.inputpass}
                     />
-                   <input type="submit" id="password-submit" value="Next"/>
+
+                      <span  className={style.passwordicon}
+                         onClick={togglePasswordVisibility}
+                     >
+                            {input.show ? '🙈' : '👁️'}
+                      </span>
+
+                   <input type="submit" style={{cursor:'pointer'}} id="password-submit" value="Next"/>
                 </div>
             </form>
             <form >
@@ -52,7 +101,7 @@ export const  Changepassword = () => {
                      className={`${style.requirement} ${isLongEnough ? style.valid : style.invalid}`}
                     >
                            {isLongEnough ? "✅" : "❌"}
-                           <p>Al menos 8 caracteres</p>
+                           <p>Entre 8 y 16 caracteres</p>
                     </li>
                     <li
                     className={`${style.requirement} ${hasUpperCase ? style.valid : style.invalid}`}
