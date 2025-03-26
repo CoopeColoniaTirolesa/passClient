@@ -1,0 +1,12 @@
+.head{
+    max-width: 1280px;
+}
+
+.head img{
+    width: 20%;
+    text-align: left;
+}
+
+.head ul li{
+    list-style: none;
+}
