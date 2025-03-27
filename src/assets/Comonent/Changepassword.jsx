@@ -7,13 +7,12 @@ import style from '../../design/password.module.css';
 
 export const  Changepassword = () => {
     
+    const [show, setShow] = useState(false)
     const[input, setInput] = useState({
         user:"",
-        password:"",
-        show:""
+        password:""
     })
     const [errors, setErrors] = useState(true)
-    const [show, setShow] = useState("")
     const navigate = useNavigate();
 
 
@@ -78,8 +77,7 @@ export const  Changepassword = () => {
                 <div className={style.password}>
                    <input 
                        placeholder="Contraseña" 
-                    //    type={input.show ? 'text' : 'password'}
-                    type='text'
+                       type={show ? 'text' : 'password'}
                        value={input.password}
                        name="password"
                        onChange={e=>handlechange(e)}
@@ -89,7 +87,7 @@ export const  Changepassword = () => {
                       <span  className={style.passwordicon}
                          onClick={togglePasswordVisibility}
                      >
-                            {input.show ? '🙈' : '👁️'}
+                            {show ? '🙈' : '👁️'}
                       </span>
 
                    <input type="submit" style={{cursor:'pointer'}} id="password-submit" value="Next"/>
