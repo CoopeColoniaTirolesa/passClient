@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {useNavigate} from 'react-router-dom';
 
+import arrow from '../../../public/image/right-arrow.png'
 
 import style from '../../design/password.module.css';
 
@@ -41,6 +42,7 @@ export const  Changepassword = () => {
             alert("Completar datos solicitados")
             console.log("la contraseña es menor a 8")
         }else{
+            sessionStorage.setItem("Password", input.password)
             navigate("/next-page")
         }
     }
@@ -90,8 +92,9 @@ export const  Changepassword = () => {
                             {show ? '🙈' : '👁️'}
                       </span>
 
-                   <input type="submit" style={{cursor:'pointer'}} id="password-submit" value="Next"/>
+                   <input type="submit" style={{cursor:'pointer'}} id="password-submit" />
                 </div>
+                
             </form>
             <form >
                 <ul className={style.requirements}>
