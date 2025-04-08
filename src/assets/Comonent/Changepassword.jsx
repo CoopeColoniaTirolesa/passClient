@@ -4,6 +4,8 @@ import {useNavigate} from 'react-router-dom';
 import arrow from '../../../public/image/right-arrow.png'
 
 import style from '../../design/password.module.css';
+import { usePassword } from './PasswordContext';
+import { Head } from './Head';
 
 
 export const  Changepassword = () => {
@@ -13,8 +15,12 @@ export const  Changepassword = () => {
         user:"",
         password:""
     })
+
+    const {password, setPassword} = usePassword()
     const [errors, setErrors] = useState(true)
+
     const navigate = useNavigate();
+
 
 
     //Validaciones
@@ -42,8 +48,8 @@ export const  Changepassword = () => {
             alert("Completar datos solicitados")
             console.log("la contraseña es menor a 8")
         }else{
-            sessionStorage.setItem("Password", input.password)
-            navigate("/next-page")
+
+            navigate("/next-page", {state:{password: input.password}})
         }
     }
 
@@ -63,6 +69,8 @@ export const  Changepassword = () => {
 
     }
     return (
+        <div>
+            {/* <Head /> */}
         <div className={style.change}>
             <form onSubmit={(e)=>handlesubmit(e)}>
                 <h2>Ingrese su nombre de usuario</h2>
@@ -124,6 +132,8 @@ export const  Changepassword = () => {
                     </li>
                 </ul>
             </form>
+        </div>
+
         </div>
     )
 }
