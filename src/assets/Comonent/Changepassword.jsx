@@ -1,20 +1,27 @@
 import React, { useState } from 'react';
 import {useNavigate} from 'react-router-dom';
 
+import arrow from '../../../public/image/right-arrow.png'
 
 import style from '../../design/password.module.css';
+import { usePassword } from './PasswordContext';
+import { Head } from './Head';
+
 
 
 export const  Changepassword = () => {
     
+    const [show, setShow] = useState(false)
     const[input, setInput] = useState({
         user:"",
-        password:"",
-        show:""
+        password:""
     })
+
+    const {password, setPassword} = usePassword()
     const [errors, setErrors] = useState(true)
-    const [show, setShow] = useState("")
+
     const navigate = useNavigate();
+
 
 
     //Validaciones
@@ -42,7 +49,8 @@ export const  Changepassword = () => {
             alert("Completar datos solicitados")
             console.log("la contraseña es menor a 8")
         }else{
-            navigate("/next-page")
+
+            navigate("/next-page", {state:{password: input.password}})
         }
     }
 
@@ -62,6 +70,8 @@ export const  Changepassword = () => {
 
     }
     return (
+        <div>
+            {/* <Head /> */}
         <div className={style.change}>
             <form onSubmit={(e)=>handlesubmit(e)}>
                 <h2>Ingrese su nombre de usuario</h2>
@@ -78,8 +88,7 @@ export const  Changepassword = () => {
                 <div className={style.password}>
                    <input 
                        placeholder="Contraseña" 
-                    //    type={input.show ? 'text' : 'password'}
-                    type='text'
+                       type={show ? 'text' : 'password'}
                        value={input.password}
                        name="password"
                        onChange={e=>handlechange(e)}
@@ -89,11 +98,12 @@ export const  Changepassword = () => {
                       <span  className={style.passwordicon}
                          onClick={togglePasswordVisibility}
                      >
-                            {input.show ? '🙈' : '👁️'}
+                            {show ? '🙈' : '👁️'}
                       </span>
 
-                   <input type="submit" style={{cursor:'pointer'}} id="password-submit" value="Next"/>
+                   <input type="submit" style={{cursor:'pointer'}} id="password-submit" />
                 </div>
+                
             </form>
             <form >
                 <ul className={style.requirements}>
@@ -123,6 +133,8 @@ export const  Changepassword = () => {
                     </li>
                 </ul>
             </form>
+        </div>
+
         </div>
     )
 }
