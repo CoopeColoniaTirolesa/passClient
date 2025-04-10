@@ -5,11 +5,13 @@ import logofibra from '../../../public/image/LogoCoope.png'
 
 
 import style from '../../design/head.module.css'
+import { Sello } from './sello';
 
 
 export const  Head = () => {
 
     return (
+        <div>
         <div className={style.head}>
              <div className={style.coopeGeneral}>
                  <img src= {coope} />
@@ -47,6 +49,8 @@ export const  Head = () => {
                     </li>
             </ul>
            </div>
+        </div>
+           <Sello/>
         </div>
     )
 }
