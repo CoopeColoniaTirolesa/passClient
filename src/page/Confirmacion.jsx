@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 
 import style from '../design/password.module.css'
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 
 export const  Confirmacion = () => {
     const location = useLocation();
     const passwordAnterior = location.state?.password || ""
+    const navigate = useNavigate()
 
     const [input, setInput] = useState({ password : ""})
     const [show, setShow] = useState(false)
@@ -26,7 +27,7 @@ export const  Confirmacion = () => {
         }else{
             alert("Contraseña confirmada correctamente")
             console.log("Contraseña confirmada")
-            setInput({password:""})
+            navigate("/", {state:{password: input.password}})
         }
         //Buscar validacion para que la contraseña coincida con la contraseña de la pagina anterior
     }

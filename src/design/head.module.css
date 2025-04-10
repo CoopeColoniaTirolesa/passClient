@@ -2,7 +2,10 @@
        display: flex;
        background-color: black;
        justify-content:space-around;
-       padding: 20px;
+       padding: 50px;
+       padding-bottom: 220px;
+       padding-top: 120px;
+       border-top: 2px solid #fcf113;
     }
 
 .head img{
@@ -16,10 +19,40 @@
 }
 
 .coopeGeneral {
-    float: right;
-    text-align: right;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    align-items: center;
 }
 
 .coopeGeneral img{
-    width: 40%;
+    width: 60%;
+}
+
+.info{
+    width: 55%;
+    display: flex;
+}
+.info ul{
+    list-style: none;
+    padding: 20px;
+}
+
+.info li{
+    line-height: 3;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.info svg{
+    border-radius: 50%;
+    padding: 3px;
+    border: 1px solid white;
+}
+
+.info h3{
+    line-height: normal;
+    margin: 0;
+    text-transform: uppercase;
 }
