@@ -1,12 +1,25 @@
-.head{
-    max-width: 1280px;
-}
+    .head{
+       display: flex;
+       background-color: black;
+       justify-content:space-around;
+       padding: 20px;
+    }
 
 .head img{
-    width: 20%;
-    text-align: left;
+    width:11%;
+    /* text-align: left; */
+
 }
 
 .head ul li{
-    list-style: none;
+    /* list-style: none; */
+}
+
+.coopeGeneral {
+    float: right;
+    text-align: right;
+}
+
+.coopeGeneral img{
+    width: 40%;
 }

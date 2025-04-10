@@ -9,7 +9,8 @@ import { PasswordProvider } from '../src/assets/Comonent/PasswordContext.jsx';
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <PasswordProvider>  
-       <App />  
+       <App />
+       <Head/>
     </PasswordProvider>
   </StrictMode>,
 )

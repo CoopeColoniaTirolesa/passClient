@@ -26,6 +26,7 @@ export const  Confirmacion = () => {
         }else{
             alert("Contraseña confirmada correctamente")
             console.log("Contraseña confirmada")
+            setInput({password:""})
         }
         //Buscar validacion para que la contraseña coincida con la contraseña de la pagina anterior
     }
@@ -38,8 +39,10 @@ export const  Confirmacion = () => {
         })
     }
 
+
+
     return (
-        <div className={style.password}>
+        <div className={style.confirmacionpPassword}>
             <form onSubmit={(e)=>handlesubmit(e)} >
             <h2>Ingrese nuevamente su contraseña</h2>
             <input 
@@ -53,11 +56,11 @@ export const  Confirmacion = () => {
             />
             <span  className={style.passwordicon}
                 onClick={togglePasswordVisibility}
-                style={{position:'relative', bottom:'35px', left:'42%'}}
+                style={{position:'relative', bottom:'35px', left:'46%'}}
             >
                 {show ? '🙈' : '👁️'}
             </span>
-            <input type="submit"  style={{cursor:'pointer', width:'100%'}} id="password-submit" value="Confirmar"/>
+            <input type="submit" style={{cursor:'pointer', width:'100%'}} id="password-submit" value="Confirmar"/>
             </form>
         </div>
     )

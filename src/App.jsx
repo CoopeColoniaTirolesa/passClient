@@ -15,6 +15,7 @@ function App() {
         <Route path='/' element = {<Changepassword/>} />
         <Route path="/next-page" element = {<Confirmacion />} />
      </Routes>
+    {/* <Head/> */}
     </BrowserRouter>
   )
 }
