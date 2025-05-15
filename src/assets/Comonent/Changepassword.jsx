@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {useNavigate} from 'react-router-dom';
 
 import arrow from '../../../public/image/right-arrow.png'
@@ -6,14 +6,18 @@ import arrow from '../../../public/image/right-arrow.png'
 import style from '../../design/password.module.css';
 import { usePassword } from './PasswordContext';
 import { Head } from './Head';
+import { useDispatch } from 'react-redux';
+import { updatewifi } from '../../Redux/Action/Action';
 
 
 
 export const  Changepassword = () => {
+    const dispatch = useDispatch()
     
     const [show, setShow] = useState(false)
     const[input, setInput] = useState({
-        user:"",
+        nombreCuenta:"",
+        ssid:"",
         password:""
     })
 
@@ -22,6 +26,9 @@ export const  Changepassword = () => {
 
     const navigate = useNavigate();
 
+    // useEffect(()=>{
+    //     updatewifi()
+    // })
 
 
     //Validaciones
@@ -44,13 +51,13 @@ export const  Changepassword = () => {
     function handlesubmit (e) {
         e.preventDefault()
         if(
-            input.user.length <= 0 || !isLongEnough || !hasUpperCase || !hasLoweCase || !haNumber
+            input.nombreCuenta.length <= 0 || !isLongEnough || !hasUpperCase || !hasLoweCase || !haNumber
         ){
             alert("Completar datos solicitados")
             console.log("la contraseña es menor a 8")
         }else{
-
-            navigate("/next-page", {state:{password: input.password}})
+            // dispatch(updatewifi(input))
+            navigate("/next-page", {state:{input}})
         }
     }
 
@@ -74,17 +81,29 @@ export const  Changepassword = () => {
             {/* <Head /> */}
         <div className={style.change}>
             <form onSubmit={(e)=>handlesubmit(e)}>
-                <h2>Ingrese su nombre de usuario</h2>
+                <h2>Nombre de usuario</h2>
                    <div className={style.password}>
                      <input 
                          placeholder="usuario" 
                          type="text"
-                         name="user"
-                         value={input.user} 
+                         name="nombreCuenta"
+                         value={input.nombreCuenta} 
                          onChange={e=>handlechange(e)}
+                         style={{margin:"0"}}
                       />
                   </div>
-                <h2>Ingrese su nueva contraseña</h2>
+                <h2>Nuevo nombre de wifi</h2>
+                   <div className={style.password}>
+                     <input 
+                         placeholder="usuario" 
+                         type="text"
+                         name="ssid"
+                         value={input.ssid} 
+                         onChange={e=>handlechange(e)}
+                         style={{margin:"0"}}
+                      />
+                </div>
+                <h2>Nueva contraseña</h2>
                 <div className={style.password}>
                    <input 
                        placeholder="Contraseña" 
@@ -93,6 +112,7 @@ export const  Changepassword = () => {
                        name="password"
                        onChange={e=>handlechange(e)}
                        className={style.inputpass}
+                       style={{margin:"0"}}
                     />
 
                       <span  className={style.passwordicon}

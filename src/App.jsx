@@ -5,6 +5,7 @@ import './App.css'
 import { Changepassword } from './assets/Comonent/Changepassword'
 import { Confirmacion } from './page/Confirmacion'
 import { Head } from './assets/Comonent/Head'
+import { Admin } from './page/Admin'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -14,6 +15,7 @@ function App() {
      <Routes>
         <Route path='/' element = {<Changepassword/>} />
         <Route path="/next-page" element = {<Confirmacion />} />
+        <Route path='/admin' element ={<Admin/>} />
      </Routes>
     {/* <Head/> */}
     </BrowserRouter>

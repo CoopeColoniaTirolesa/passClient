@@ -1,0 +1,27 @@
+.cuadro{
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  padding: 2rem;
+  box-sizing: border-box;
+  width: 100%;
+  text-decoration: none;
+  list-style: none;
+  gap: 2rem;
+}
+
+
+.contenido{
+  background-color: #c33232;
+  padding: 1rem;
+  border-radius: 10px;
+  max-width: 600px; /* Se adapta hasta este ancho */
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.contenido li{
+    text-decoration: none;
+}
+
+.titular{
+    width: 100%;
+}

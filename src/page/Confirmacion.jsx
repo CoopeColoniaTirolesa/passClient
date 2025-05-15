@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import style from '../design/password.module.css'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { updatewifi } from '../Redux/Action/Action';
 
 
 export const  Confirmacion = () => {
     const location = useLocation();
-    const passwordAnterior = location.state?.password || ""
+    const passwordAnterior = location.state?.input|| {}
     const navigate = useNavigate()
+    const disptach = useDispatch()
 
-    const [input, setInput] = useState({ password : ""})
+    const [input, setInput] = useState({ })
     const [show, setShow] = useState(false)
     const [errors, setErrors] = useState("")
 
@@ -19,12 +22,14 @@ export const  Confirmacion = () => {
 
     }
 
+
     function handlesubmit(e){
         e.preventDefault()
-        if(input.password.trim() !== passwordAnterior.trim()){
+        if(input.password.trim() !== passwordAnterior.password.trim()){
             alert("La contraseña no coincide")
             setErrors("La contraseña no coinciden") 
         }else{
+            disptach(updatewifi(passwordAnterior))
             alert("Contraseña confirmada correctamente")
             console.log("Contraseña confirmada")
             navigate("/", {state:{password: input.password}})
