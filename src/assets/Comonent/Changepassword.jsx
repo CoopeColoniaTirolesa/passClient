@@ -95,7 +95,7 @@ export const  Changepassword = () => {
                 <h2>Nuevo nombre de wifi</h2>
                    <div className={style.password}>
                      <input 
-                         placeholder="usuario" 
+                         placeholder="opcional" 
                          type="text"
                          name="ssid"
                          value={input.ssid} 
@@ -154,7 +154,6 @@ export const  Changepassword = () => {
                 </ul>
             </form>
         </div>
-
         </div>
     )
 }

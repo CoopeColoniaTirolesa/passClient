@@ -56,3 +56,22 @@
     margin: 0;
     text-transform: uppercase;
 }
+
+@media (max-width: 480px) {
+        .head{
+       display: flex;
+       flex-direction: column;
+       align-content: center;
+       align-items: center;
+       margin: 0;
+       padding: 10px;
+    }
+    .info{
+        flex-direction: column;
+        width: 100%;
+    }
+    .coopeGeneral {
+    width: 80%;
+    align-items: normal;
+}
+}

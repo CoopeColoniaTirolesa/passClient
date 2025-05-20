@@ -11,11 +11,21 @@
 
 
 .contenido{
-  background-color: #c33232;
+  background-image:      linear-gradient(-179deg,  #82a736 0%, #85ab3a 100%);
+  /* border: 3px solid #98C73D; */
+  /* box-shadow: 0 0 0 3px #D0DD2B;   */
   padding: 1rem;
   border-radius: 10px;
   max-width: 600px; /* Se adapta hasta este ancho */
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+
+  font-size: 16px;
+  color: white;
+  text-transform:uppercase;
+  text-shadow: 0px 1px 1px rgba(0,0,0,0.50);
+  font-weight: 400;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .contenido li{
@@ -24,4 +34,37 @@
 
 .titular{
     width: 100%;
+}
+.solicitar{
+     margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 50vh;
+  align-items: center;
+}
+.solicitar button{
+    display:block;
+    cursor: pointer;
+    float: left;
+  
+    background-image:      linear-gradient(-179deg,  #98C73D 0%, #98C73D 100%);
+    border: 3px solid #98C73D;
+    box-shadow: 0 0 0 3px #D0DD2B;  
+    
+    padding: 0 15px;
+    height: 38px;
+  
+    font-size: 16px;
+    color: white;
+    text-transform:uppercase;
+    text-shadow: 0px 1px 1px rgba(0,0,0,0.50);
+    font-weight: 400;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  
+    -webkit-transition: background-image 1200ms cubic-bezier(0.190, 1.000, 0.220, 1.000);
+    -moz-transition: background-image 1200ms cubic-bezier(0.190, 1.000, 0.220, 1.000);
+    -ms-transition: background-image 1200ms cubic-bezier(0.190, 1.000, 0.220, 1.000);
+    -o-transition: background-image 1200ms cubic-bezier(0.190, 1.000, 0.220, 1.000);
+    transition: background-image 1200ms cubic-bezier(0.190, 1.000, 0.220, 1.000);
 }

@@ -32,7 +32,7 @@ export const  Head = () => {
                     <p><a href='351 552 5605    ' style={{cursor:'pointer', textDecoration:'none', color:'white'}}>351 552 5605</a></p>
                 </li>
                 <li >
-                    <h3>Internet Consultar</h3>
+                    <h3>Internet Consultas</h3>
                 </li>
                 <li style={{lineHeight:'0'}} >
                     <div>

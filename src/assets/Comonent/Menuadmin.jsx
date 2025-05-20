@@ -17,66 +17,78 @@ export const  Menuadmin = () => {
 
     return (
         <div className={style.admin}>
-                <button onClick={e=>handleUsers(e)}>Contraseña</button>
+                {
+
+                users.length>0?(
             <ul className={style.cuadro}> 
               <li className={style.contenido}>
                 <p>Titular</p>
-                      {users && users.length > 0 ? (
+                      {
+                      // users && users.length > 0 ? (
                         users.map((user, index) => (
                           <div key={index} className={style.titular}>
                             {user.nombreCuenta}
                           </div>
                           
                         ))
-                      ) : (
-                        <li>No hay usuarios cargados</li>
-                      )}
+                      // ) : (
+                      //   <li>No hay usuarios cargados</li>
+                      // )
+                      }
               </li>
                       <li className={style.contenido}>
                         <p>SSID</p>
                       {
-                        users && users.length > 0 ? (
+                        // users && users.length > 0 ? (
                           users.map((SSID, INDEX)=>(
                             <div key={INDEX}>
                               {SSID.ssid}
                             </div>
 
                           ))
-                        ):
-                          <li>No hay ssid</li>
+                        // ):
+                        //   <li>No hay ssid</li>
                       }
                       </li>
                       <li className={style.contenido}>
                         <p>Password</p>
                         {
-                        users && users.length > 0 ? (
+                        // users && users.length > 0 ? (
                           users.map((SSID, INDEX)=>(
                             <div key={INDEX}>
-                              {SSID.ssid}
+                              {SSID.password}
                             </div>
 
                           ))
-                        ):
-                          <li>No hay ssid</li>
+                        // ):
+                        //   <li>No hay password</li>
                         }
                       </li>
                                             <li className={style.contenido}>
                         <p>Solicitado</p>
                         {
-                        users && users.length > 0 ? (
+                        // users && users.length > 0 ? (
                           users.map((SSID, INDEX)=>(
                             <div key={INDEX}>
                               {SSID.updateAt}
                             </div>
 
                           ))
-                        ):
-                          <li>No hay ssid</li>
+                        // ):
+                        //   <li>No hay ssid</li>
                         }
                       </li>
 
                 <li></li>
             </ul>
+              ):(
+                <div className={style.solicitar}>
+                  <h2>Solicitar usuarios</h2>
+                  <button onClick={e=>handleUsers(e)}>Solicitar</button>
+                </div>
+              )
+                }
+
         </div>
     )
 }

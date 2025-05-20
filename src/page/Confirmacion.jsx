@@ -12,7 +12,7 @@ export const  Confirmacion = () => {
     const navigate = useNavigate()
     const disptach = useDispatch()
 
-    const [input, setInput] = useState({ })
+    const [input, setInput] = useState({password:""})
     const [show, setShow] = useState(false)
     const [errors, setErrors] = useState("")
 

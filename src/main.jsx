@@ -15,6 +15,6 @@ createRoot(document.getElementById('root')).render(
        <App />
        <Head/>
     </PasswordProvider>
-  </StrictMode>,
+  </StrictMode>
   </Provider>
 )
