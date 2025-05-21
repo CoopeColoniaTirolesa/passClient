@@ -11,14 +11,15 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
+    <div>
     <BrowserRouter>
      <Routes>
         <Route path='/' element = {<Changepassword/>} />
         <Route path="/next-page" element = {<Confirmacion />} />
         <Route path='/admin' element ={<Admin/>} />
      </Routes>
-    {/* <Head/> */}
     </BrowserRouter>
+    </div>
   )
 }
 

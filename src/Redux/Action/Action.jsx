@@ -1,6 +1,5 @@
 import api from '../../Services/Api';
 
-import axios from 'axios'
 
 const UPDATE_WIFI_SUCCESS = "UPDATE_WIFI_SUCCESS";
 const WIFI_ERROR = 'WIFI_ERROR';
@@ -21,7 +20,7 @@ export function updatewifi(payload){
     return async function(dispatch){
     try{
             const response = await api.post('http://192.168.55.104:5000/api/auth/update', payload)
-            console.log(response.data, "Holaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            // console.log(response.data, "Holaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
             return response 
         }
         catch(err){

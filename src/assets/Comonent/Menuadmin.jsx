@@ -18,64 +18,50 @@ export const  Menuadmin = () => {
     return (
         <div className={style.admin}>
                 {
-
                 users.length>0?(
             <ul className={style.cuadro}> 
-              <li className={style.contenido}>
-                <p>Titular</p>
+                     <li className={style.contenido}>
+                      <p>Titular</p>
                       {
-                      // users && users.length > 0 ? (
                         users.map((user, index) => (
                           <div key={index} className={style.titular}>
                             {user.nombreCuenta}
                           </div>
                           
                         ))
-                      // ) : (
-                      //   <li>No hay usuarios cargados</li>
-                      // )
                       }
-              </li>
+                     </li>
                       <li className={style.contenido}>
                         <p>SSID</p>
                       {
-                        // users && users.length > 0 ? (
                           users.map((SSID, INDEX)=>(
-                            <div key={INDEX}>
+                            <div key={INDEX}  className={style.titular}>
                               {SSID.ssid}
                             </div>
 
                           ))
-                        // ):
-                        //   <li>No hay ssid</li>
                       }
                       </li>
                       <li className={style.contenido}>
                         <p>Password</p>
                         {
-                        // users && users.length > 0 ? (
                           users.map((SSID, INDEX)=>(
-                            <div key={INDEX}>
+                            <div key={INDEX}  className={style.titular}>
                               {SSID.password}
                             </div>
 
                           ))
-                        // ):
-                        //   <li>No hay password</li>
                         }
                       </li>
-                                            <li className={style.contenido}>
+                      <li className={style.contenido}>
                         <p>Solicitado</p>
                         {
-                        // users && users.length > 0 ? (
                           users.map((SSID, INDEX)=>(
-                            <div key={INDEX}>
+                            <div key={INDEX}  className={style.titular}>
                               {SSID.updateAt}
                             </div>
 
                           ))
-                        // ):
-                        //   <li>No hay ssid</li>
                         }
                       </li>
 

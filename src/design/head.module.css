@@ -64,6 +64,7 @@
        align-content: center;
        align-items: center;
        margin: 0;
+       height: auto;
        padding: 10px;
     }
     .info{
