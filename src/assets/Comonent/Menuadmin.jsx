@@ -2,11 +2,13 @@ import { useDispatch, useSelector } from "react-redux"
 import { getAll } from "../../Redux/Action/Action"
 
 import style from '../../design/admin.module.css'
+import { useState } from "react"
 
 export const  Menuadmin = () => {
     const users = useSelector(state=>state.users)    
-    console.log(users, "getlsssssadascasfefac")
     const dispatch = useDispatch()
+
+    const [search, setSearch] = useState("")
 
     const handleUsers = (e) => {
         // console.log(getAll(),"ddddddddddddddddddddddddddddddddddddddddddddd")
@@ -14,67 +16,49 @@ export const  Menuadmin = () => {
         dispatch(getAll())
     }
 
-
+    const filterUser = users.filter(u=>
+        `${u.nombreCuenta} ${u.ssid} ${u.password}`.toLowerCase()
+          .includes(search.toLowerCase())
+    )
+    console.log(filterUser, " search")
     return (
         <div className={style.admin}>
+          <div className={style.search}>
+              <input 
+              type="text"
+              placeholder="buscar contraseña"
+              value={search}
+              onChange={(e)=>setSearch(e.target.value)}
+              />
+              <button onClick={handleUsers}>Buscar</button>
+          </div>
                 {
-                users.length>0?(
-            <ul className={style.cuadro}> 
-                     <li className={style.contenido}>
-                      <p>Titular</p>
-                      {
-                        users.map((user, index) => (
-                          <div key={index} className={style.titular}>
-                            {user.nombreCuenta}
-                          </div>
-                          
-                        ))
-                      }
-                     </li>
-                      <li className={style.contenido}>
-                        <p>SSID</p>
-                      {
-                          users.map((SSID, INDEX)=>(
-                            <div key={INDEX}  className={style.titular}>
-                              {SSID.ssid}
-                            </div>
-
-                          ))
-                      }
-                      </li>
-                      <li className={style.contenido}>
-                        <p>Password</p>
+                    filterUser.length>0?(
+                    <ul className={style.cuadro}> 
+                       <li className={style.info}>
                         {
-                          users.map((SSID, INDEX)=>(
-                            <div key={INDEX}  className={style.titular}>
-                              {SSID.password}
+                          filterUser.map((user, index) => (
+                            <div key={index} className={style.titular}>
+                                <p className={style.change} style={{textAlign:'center', padding:'10px'}}>Cuenta:<br/> <span>{user.nombreCuenta}</span> <br/>  
+                                SSID: <br/><span>{user.ssid}</span><br/>
+                                Contraseña: <br/><span>{user.password}</span>
+                                <br/>
+                                </p>
+                                
                             </div>
-
                           ))
                         }
-                      </li>
-                      <li className={style.contenido}>
-                        <p>Solicitado</p>
-                        {
-                          users.map((SSID, INDEX)=>(
-                            <div key={INDEX}  className={style.titular}>
-                              {SSID.updateAt}
-                            </div>
-
-                          ))
-                        }
-                      </li>
-
-                <li></li>
-            </ul>
-              ):(
-                <div className={style.solicitar}>
-                  <h2>Solicitar usuarios</h2>
-                  <button onClick={e=>handleUsers(e)}>Solicitar</button>
-                </div>
-              )
-                }
-
-        </div>
+                       </li>
+              </ul>
+                ):(
+                  <div className={style.solicitar}>
+                    <h2>Solicitar usuarios</h2>
+                    <button onClick={e=>handleUsers(e)}>Solicitar</button>
+                  </div>
+                )
+                    
+              }
+                  </div>
     )
-}
+    }
+    

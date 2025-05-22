@@ -7,7 +7,7 @@ const WIFI_ERROR = 'WIFI_ERROR';
 export function getAll(){
     return async function(dispatch){
         try{
-            const response = await api.get(`http://192.168.55.104:5000/api/auth/allusers`)
+            const response = await api.get(`http://localhost:5000/api/auth/allusers`)
             dispatch({type:"GET_ALL_USERS", payload:response.data})
             // console.log(response.data)
         }catch(e){
