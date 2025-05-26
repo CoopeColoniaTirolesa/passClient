@@ -1,6 +1,10 @@
+
 const initialState= {
     update:[],
-    users:[]
+    users:[],
+    isAuthenticated:false,
+    use:null,
+    currentAdmin:null
 }
 
 export default function rootReducer(state = initialState, action){
@@ -14,6 +18,12 @@ export default function rootReducer(state = initialState, action){
         case "UPDATE_WIFI":
             return{
                 ...state
+            }
+        case "LOGIN_SUCCES":
+            return{
+                ...state,
+                // isAuthenticated:true,
+                currentAdmin:action.payload
             } 
             default:
                 return state

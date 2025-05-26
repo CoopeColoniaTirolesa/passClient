@@ -7,11 +7,15 @@ const WIFI_ERROR = 'WIFI_ERROR';
 export function getAll(){
     return async function(dispatch){
         try{
-            const response = await api.get(`http://localhost:5000/api/auth/allusers`)
-            dispatch({type:"GET_ALL_USERS", payload:response.data})
-            // console.log(response.data)
+            const response = await api.get(`http://localhost:5000/api/auth/allusers`,{
+                withCredentials:true
+            });
+            dispatch({
+                type:"GET_ALL_USERS",
+                payload:response.data
+            })
         }catch(e){
-            console.log(e)
+            console.log(e, "Error en el getall")
         }
 }
 }
@@ -19,7 +23,7 @@ export function getAll(){
 export function updatewifi(payload){
     return async function(dispatch){
     try{
-            const response = await api.post('http://192.168.55.104:5000/api/auth/update', payload)
+            const response = await api.post('http://localhost:5000/api/auth/update', payload)
             // console.log(response.data, "Holaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
             return response 
         }
@@ -29,3 +33,26 @@ export function updatewifi(payload){
         }
     }
 }
+
+export function login(username, password){
+    return async function(dispatch){
+        try{
+            const res = await api.post('http://localhost:5000/api/auth/login',{username, password},{
+                withCredentials:true
+            });
+            
+            localStorage.setItem('token', res.data.token)
+            
+            dispatch({
+                type: "LOGIN_SUCCES",
+                payload: res.data
+            });
+            console.log(res.data,"daraaaa")
+            
+        }catch(err){
+            console.log(err.message, "error en el login")
+            dispatch({type:'Login fail'})
+        }
+    }
+}
+

@@ -17,6 +17,7 @@
   text-decoration: none;
   list-style: none;
   gap: 2rem;
+  
 }
 
 
@@ -36,11 +37,22 @@
   text-shadow: 0px 1px 1px rgba(0,0,0,0.50);
   font-weight: 400;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  /* display: flex; */
   
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  flex-direction: column;
+  /* display: grid; */
+  /* grid-template-columns: 1fr 1fr 1fr 1fr;
+  flex-direction: column; */
   gap: 0rem;
+}
+
+.titulos {
+  display: flex;
+  justify-content: space-around;
+}
+
+.titulos h3{
+  text-align: center;
 }
 
 .contenido li{
@@ -49,6 +61,11 @@
 
 .titular{
     border: 1px solid yellow;
+
+    display: flex;
+    margin: 0 auto;
+
+    justify-content: space-around;
 }
 .solicitar{
      margin: 0;
@@ -130,6 +147,7 @@ max-width: 100%;
 }
 .change{
   font-size: 5px;
+  width: 30%;
 }
 
   }

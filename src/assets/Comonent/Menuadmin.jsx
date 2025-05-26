@@ -1,20 +1,39 @@
 import { useDispatch, useSelector } from "react-redux"
+import {login} from '../../Redux/Action/Action';
 import { getAll } from "../../Redux/Action/Action"
 
 import style from '../../design/admin.module.css'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export const  Menuadmin = () => {
-    const users = useSelector(state=>state.users)    
     const dispatch = useDispatch()
 
+    const currentAdmin = useSelector(state=>state.currentAdmin)    
+    const users = useSelector(state=>state.users)
+    console.log(currentAdmin?.role,"skajsdk")
+
     const [search, setSearch] = useState("")
+    const[loading, setLoading] = useState(true)
+    const[username, setUsername] = useState("")
+    const[password, setPassword] = useState("")
+    const[loggedIn, setLoggedIn] = useState(false)
 
     const handleUsers = (e) => {
-        // console.log(getAll(),"ddddddddddddddddddddddddddddddddddddddddddddd")
-        e.preventDefault();
-        dispatch(getAll())
+      e.preventDefault();
+        if(!username || !password){
+          alert("Por favor, completar con los datos solicitados")
+          return;
+        }
+       dispatch(login(username, password))
+        console.log("Acceso aceptado")
     }
+
+    useEffect(()=>{
+      if(currentAdmin?.user?.role === "admin"){
+        dispatch(getAll())
+      }
+    },[currentAdmin])
+
 
     const filterUser = users.filter(u=>
         `${u.nombreCuenta} ${u.ssid} ${u.password}`.toLowerCase()
@@ -23,27 +42,33 @@ export const  Menuadmin = () => {
     console.log(filterUser, " search")
     return (
         <div className={style.admin}>
-          <div className={style.search}>
-              <input 
-              type="text"
-              placeholder="buscar contraseña"
-              value={search}
-              onChange={(e)=>setSearch(e.target.value)}
-              />
-              <button onClick={handleUsers}>Buscar</button>
-          </div>
                 {
                     filterUser.length>0?(
                     <ul className={style.cuadro}> 
+                          <div className={style.search}>
+                              <input 
+                              type="text"
+                              placeholder="buscar contraseña"
+                              value={search}
+                              onChange={(e)=>setSearch(e.target.value)}
+                              />
+                              <button onClick={""}>Buscar</button>
+                          </div>
                        <li className={style.info}>
+                        <div className={style.titulos}>
+                        <h3>Cuenta</h3>
+                        <h3>SSID</h3>
+                        <h3>Contraseña</h3>
+
+
+                        </div>
                         {
                           filterUser.map((user, index) => (
                             <div key={index} className={style.titular}>
-                                <p className={style.change} style={{textAlign:'center', padding:'10px'}}>Cuenta:<br/> <span>{user.nombreCuenta}</span> <br/>  
-                                SSID: <br/><span>{user.ssid}</span><br/>
-                                Contraseña: <br/><span>{user.password}</span>
-                                <br/>
-                                </p>
+                                <p className={style.change} style={{width:'20%', textAlign:'center'}}> <span>{user.nombreCuenta}</span></p>
+                                <p className={style.change} style={{width:'20%', textAlign:'center'}}> <span>{user.ssid}</span></p>
+                                <p className={style.change} style={{width:'20%', textAlign:'center'}}><span>{user.password}</span></p>
+                                
                                 
                             </div>
                           ))
@@ -53,7 +78,11 @@ export const  Menuadmin = () => {
                 ):(
                   <div className={style.solicitar}>
                     <h2>Solicitar usuarios</h2>
-                    <button onClick={e=>handleUsers(e)}>Solicitar</button>
+                    <form onSubmit={handleUsers}>
+                      <input value={username} onChange={e=>setUsername(e.target.value)} placeholder="Usuario"/>
+                      <input value= {password} onChange={e=>setPassword(e.target.value)} placeholder="Contraseña"/>
+                      <button type="submit">Solicitar</button>
+                    </form>
                   </div>
                 )
                     

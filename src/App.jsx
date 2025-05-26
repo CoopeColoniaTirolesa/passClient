@@ -6,6 +6,8 @@ import { Changepassword } from './assets/Comonent/Changepassword'
 import { Confirmacion } from './page/Confirmacion'
 import { Head } from './assets/Comonent/Head'
 import { Admin } from './page/Admin'
+import { PrivateRoute } from './assets/Comonent/PrivateRouter'
+import { Menuadmin } from './assets/Comonent/Menuadmin'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -16,7 +18,7 @@ function App() {
      <Routes>
         <Route path='/' element = {<Changepassword/>} />
         <Route path="/next-page" element = {<Confirmacion />} />
-        <Route path='/admin' element ={<Admin/>} />
+        <Route path='/admin' element ={<Menuadmin/>} />
      </Routes>
     </BrowserRouter>
     </div>
