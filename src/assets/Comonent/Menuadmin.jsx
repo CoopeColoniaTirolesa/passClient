@@ -48,7 +48,7 @@ export const  Menuadmin = () => {
                           <div className={style.search}>
                               <input 
                               type="text"
-                              placeholder="buscar contraseña"
+                              placeholder="buscar usuario"
                               value={search}
                               onChange={(e)=>setSearch(e.target.value)}
                               />
@@ -77,6 +77,12 @@ export const  Menuadmin = () => {
               </ul>
                 ):(
                   <div className={style.solicitar}>
+                        <p>
+                          Si no sos administrador y por error terminaste en este panel de administrador,
+                         te recomienda amablemente que te retires o acciones legales podrian recaer sobre
+                          tu persona al manipular los datos que se encuentran en este panel,
+                          ya que tenemos tus datos de acceso desde tu direccion ip
+                        </p>
                     <h2>Solicitar usuarios</h2>
                     <form onSubmit={handleUsers}>
                       <input value={username} onChange={e=>setUsername(e.target.value)} placeholder="Usuario"/>
