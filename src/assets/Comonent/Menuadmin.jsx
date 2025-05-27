@@ -3,7 +3,11 @@ import {login} from '../../Redux/Action/Action';
 import { getAll } from "../../Redux/Action/Action"
 
 import style from '../../design/admin.module.css'
+import '../../design/design.css'
 import { useEffect, useState } from "react"
+
+import user from '../../../public/user.svg'
+import security from '../../../public/security.svg'
 
 export const  Menuadmin = () => {
     const dispatch = useDispatch()
@@ -52,15 +56,12 @@ export const  Menuadmin = () => {
                               value={search}
                               onChange={(e)=>setSearch(e.target.value)}
                               />
-                              <button onClick={""}>Buscar</button>
                           </div>
                        <li className={style.info}>
                         <div className={style.titulos}>
-                        <h3>Cuenta</h3>
-                        <h3>SSID</h3>
-                        <h3>Contraseña</h3>
-
-
+                            <h3>Cuenta</h3>
+                            <h3>SSID</h3>
+                            <h3>Contraseña</h3>
                         </div>
                         {
                           filterUser.map((user, index) => (
@@ -74,22 +75,34 @@ export const  Menuadmin = () => {
                           ))
                         }
                        </li>
-              </ul>
-                ):(
-                  <div className={style.solicitar}>
-                        <p>
-                          Si no sos administrador y por error terminaste en este panel de administrador,
-                         te recomienda amablemente que te retires o acciones legales podrian recaer sobre
-                          tu persona al manipular los datos que se encuentran en este panel,
-                          ya que tenemos tus datos de acceso desde tu direccion ip
-                        </p>
-                    <h2>Solicitar usuarios</h2>
-                    <form onSubmit={handleUsers}>
-                      <input value={username} onChange={e=>setUsername(e.target.value)} placeholder="Usuario"/>
-                      <input value= {password} onChange={e=>setPassword(e.target.value)} placeholder="Contraseña"/>
-                      <button type="submit">Solicitar</button>
-                    </form>
-                  </div>
+                        </ul>
+                          ):(
+                          <div class="container">
+                          	<div class="screen">
+                          		<div class="screen__content">
+                          			<form class="login" onSubmit={handleUsers}>
+                          				<div class="login__field">
+                          					<i class="login__icon fas fa-user"><img src= {user} width={20}/></i>
+                          					<input type="text" class="login__input" value={username} onChange={e=>setUsername(e.target.value)} placeholder="Usuario"/>
+                          				</div>
+                          				<div class="login__field">
+                          					<i class="login__icon fas fa-lock"><img src= {security} width={20} /></i>
+                          					<input type="password" class="login__input" onChange={e=>setPassword(e.target.value)} placeholder="Contraseña"/>
+                          				</div>
+                          				<button type="submit" class="button login__submit">
+                          					<span class="button__text">LogIn Now</span>
+                          					<i class="button__icon fas fa-chevron-right"></i>
+                          				</button>				
+                          			</form>
+                          		</div>
+                          		<div class="screen__background">
+                          			<span class="screen__background__shape screen__background__shape4"></span>
+                          			<span class="screen__background__shape screen__background__shape3"></span>		
+                          			<span class="screen__background__shape screen__background__shape2"></span>
+                          			<span class="screen__background__shape screen__background__shape1"></span>
+                          		</div>		
+                          	</div>
+                          </div>
                 )
                     
               }

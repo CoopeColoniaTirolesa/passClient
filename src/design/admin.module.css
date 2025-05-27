@@ -22,7 +22,7 @@
 
 
 .info{
-  background-image:      linear-gradient(-179deg,  #82a736 0%, #85ab3a 100%);
+  /* background-image:      linear-gradient(-179deg,  #202083 0%, #6164b9 100%); */
   /* border: 3px solid #98C73D; */
   /* box-shadow: 0 0 0 3px #D0DD2B;   */
   padding: 1rem;
@@ -49,10 +49,20 @@
 .titulos {
   display: flex;
   justify-content: space-around;
+  border: 1px solid rgb(255, 255, 255);
+  margin: 0 auto;
+  width: 100%;
 }
 
 .titulos h3{
   text-align: center;
+}
+
+@media (max-width:600px){
+  .titulos h3{
+    font-size: 10px;
+    width: 20%;
+  }
 }
 
 .contenido li{
@@ -60,7 +70,7 @@
 }
 
 .titular{
-    border: 1px solid yellow;
+    border: 1px solid rgb(255, 255, 255);
 
     display: flex;
     margin: 0 auto;
@@ -88,8 +98,8 @@
     cursor: pointer;
     float: left;
   
-    background-image:      linear-gradient(-179deg,  #98C73D 0%, #98C73D 100%);
-    border: 3px solid #98C73D;
+    background-image:      linear-gradient(-179deg,  #1a1e97 0%, #20188c 100%);
+    border: 3px solid #171ba7;
     box-shadow: 0 0 0 3px #D0DD2B;  
     
     padding: 0 15px;
@@ -121,7 +131,8 @@
 .search input{
   margin: 0;
   height: 4vh;
-  width: 50%;
+  width: 80%;
+  border-radius: 10px 3px 10px 3px;
 }
 .search button{
   height: 4vh;
@@ -160,3 +171,6 @@ max-width: 100%;
 }
 
   }
+
+
+
