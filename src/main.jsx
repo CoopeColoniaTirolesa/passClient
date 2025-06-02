@@ -2,8 +2,8 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
-import { Head } from './assets/Comonent/Head.jsx'
-import { PasswordProvider } from '../src/assets/Comonent/PasswordContext.jsx';
+import { Head } from './assets/Component/Head.jsx'
+import { PasswordProvider } from '../src/assets/Component/PasswordContext.jsx';
 import { Provider } from 'react-redux'
 import  store  from '../src/Redux/Store/Index.js'
 

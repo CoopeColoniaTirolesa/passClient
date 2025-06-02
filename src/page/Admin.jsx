@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menuadmin } from '../assets/Comonent/Menuadmin';
+import { Menuadmin } from '../assets/Component/Menuadmin';
 
 
 

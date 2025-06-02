@@ -5,7 +5,7 @@ import logofibra from '../../../public/image/LogoCoope.png'
 
 
 import style from '../../design/head.module.css'
-import { Sello } from './sello';
+import { Sello } from './Sello.jsx';
 
 
 export const  Head = () => {
