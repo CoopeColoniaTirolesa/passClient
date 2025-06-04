@@ -79,7 +79,7 @@ export const  Changepassword = () => {
     return (
         <div>
             {/* <Head /> */}
-        <div className={style.change}>
+        <div className={style.loginContainer }>
             <form onSubmit={(e)=>handlesubmit(e)}>
                 <h2>Nombre de usuario</h2>
                    <div className={style.password}>
@@ -95,12 +95,14 @@ export const  Changepassword = () => {
                 <h2>Nuevo nombre de wifi</h2>
                    <div className={style.password}>
                      <input 
+
                          placeholder="opcional" 
                          type="text"
                          name="ssid"
                          value={input.ssid} 
                          onChange={e=>handlechange(e)}
                          style={{margin:"0"}}
+
                       />
                 </div>
                 <h2>Nueva contraseña</h2>
