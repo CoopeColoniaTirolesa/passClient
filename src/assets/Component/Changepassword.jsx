@@ -77,6 +77,8 @@ export const  Changepassword = () => {
 
     }
     return (
+        <div>
+            {/* <Head /> */}
         <div className={style.loginContainer }>
             <form onSubmit={(e)=>handlesubmit(e)}>
                 <h2>Nombre de usuario</h2>
@@ -153,6 +155,7 @@ export const  Changepassword = () => {
                     </li>
                 </ul>
             </form>
+        </div>
         </div>
     )
 }

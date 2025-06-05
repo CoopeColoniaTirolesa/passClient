@@ -42,7 +42,7 @@ export const  Menuadmin = () => {
     const filterUser = users.filter(u=>
         `${u.nombreCuenta} ${u.ssid} ${u.password}`.toLowerCase()
           .includes(search.toLowerCase())
-    )
+    ) 
     console.log(filterUser, " search")
     return (
         <div className={style.admin}>
@@ -87,7 +87,7 @@ export const  Menuadmin = () => {
                           				</div>
                           				<div class="login__field">
                           					<i class="login__icon fas fa-lock"><img src= {security} width={20} /></i>
-                          					<input type="password" class="login__input" onChange={e=>setPassword(e.target.value)} placeholder="Contraseña"/>
+                          					<input type="password" class="login__input" value={password} onChange={e=>setPassword(e.target.value)} placeholder="Contraseña"/>
                           				</div>
                           				<button type="submit" class="button login__submit">
                           					<span class="button__text">LogIn Now</span>
