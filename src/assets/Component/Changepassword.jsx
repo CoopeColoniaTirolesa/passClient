@@ -26,12 +26,7 @@ export const  Changepassword = () => {
 
     const navigate = useNavigate();
 
-    // useEffect(()=>{
-    //     updatewifi()
-    // })
 
-
-    //Validaciones
     const isLongEnough = input.password.length >= 8;
     const hasUpperCase = /[A-Z]/.test(input.password);
     const hasLoweCase = /[a-z]/.test(input.password);
@@ -76,8 +71,9 @@ export const  Changepassword = () => {
         setShow(!show)
 
     }
+
     return (
-        <div className={style.loginContainer }>
+        <div className={style.loginContainer}>
             <form onSubmit={(e)=>handlesubmit(e)}>
                 <h2>Nombre de usuario</h2>
                    <div className={style.password}>

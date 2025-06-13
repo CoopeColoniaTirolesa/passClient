@@ -8,6 +8,7 @@ import { useEffect, useState } from "react"
 
 import user from '../../../public/user.svg'
 import security from '../../../public/security.svg'
+import arrow from '../../../public/image/right-arrow.png'
 
 export const  Menuadmin = () => {
     const dispatch = useDispatch()
@@ -91,7 +92,7 @@ export const  Menuadmin = () => {
                           				</div>
                           				<button type="submit" class="button login__submit">
                           					<span class="button__text">LogIn Now</span>
-                          					<i class="button__icon fas fa-chevron-right"></i>
+                          					<i class="button__icon fas fa-chevron-right"> <img src= {arrow} /> </i>
                           				</button>				
                           			</form>
                           		</div>

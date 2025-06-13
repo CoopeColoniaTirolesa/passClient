@@ -147,6 +147,13 @@ body {
 	cursor: pointer;
 	transition: .2s;
 }
+
+.login__submit i{
+	width: 50%;
+}
+.login__submit img{
+	width: 10%;
+}
 @media(max-width:600px){
     .login{
         padding-top: 120px;
