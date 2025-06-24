@@ -10,6 +10,10 @@ import { useDispatch } from 'react-redux';
 import { updatewifi } from '../../Redux/Action/Action';
 
 
+import swal from 'sweetalert';
+
+
+
 
 export const  Changepassword = () => {
     const dispatch = useDispatch()
@@ -43,12 +47,16 @@ export const  Changepassword = () => {
     }
 
 
+
     function handlesubmit (e) {
         e.preventDefault()
         if(
             input.nombreCuenta.length <= 0 || !isLongEnough || !hasUpperCase || !hasLoweCase || !haNumber
         ){
-            alert("Completar datos solicitados")
+            swal("Completar datos solicitados",{
+                icon: "warning",
+                dangerMode: true
+            })
             console.log("la contraseña es menor a 8")
         }else{
             // dispatch(updatewifi(input))
@@ -72,13 +80,14 @@ export const  Changepassword = () => {
 
     }
 
+
     return (
         <div className={style.loginContainer}>
             <form onSubmit={(e)=>handlesubmit(e)}>
-                <h2>Nombre de usuario</h2>
+                <h2>Titular del servicio</h2>
                    <div className={style.password}>
                      <input 
-                         placeholder="usuario" 
+                         placeholder="opcional" 
                          type="text"
                          name="nombreCuenta"
                          value={input.nombreCuenta} 

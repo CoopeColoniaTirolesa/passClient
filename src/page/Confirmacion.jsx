@@ -5,6 +5,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { updatewifi } from '../Redux/Action/Action';
 
+import swal from 'sweetalert';
+
 
 export const  Confirmacion = () => {
     const location = useLocation();
@@ -30,7 +32,9 @@ export const  Confirmacion = () => {
             setErrors("La contraseña no coinciden") 
         }else{
             disptach(updatewifi(passwordAnterior))
-            alert("Contraseña confirmada correctamente")
+            swal("Contraseña actualizada", "Estamos aplicando el cambio. El proceso puede demorar algunas horas.",{
+                icon: "success",
+            })
             console.log("Contraseña confirmada")
             navigate("/", {state:{password: input.password}})
         }
